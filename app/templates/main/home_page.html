@@ -1,5 +1,23 @@
-{% extends "layout.html" %}
 
-{% block content %}
-    <h2>Home page</h2>
-{% endblock %}
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+  <body>
+    <button id="butt">Hi mom</button>
+    <script>
+    	$('#butt').on('click', function() {
+        	console.log("click!");
+        	$.ajax({
+				url:'/getEvents',
+				type:"POST",
+				data: JSON.stringify({"token": "id_token" }),
+				contentType:"application/json",
+				success: function(res){
+					console.log( res )
+				}
+			})
+        })
+    </script>
+  </body>
+</html>

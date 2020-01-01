@@ -11,6 +11,4 @@ APP_SYSTEM_ERROR_SUBJECT_LINE = APP_NAME + " system error"
 # Flask settings
 CSRF_ENABLED = True
 
-# Flask-User settings
-USER_APP_NAME = APP_NAME
 

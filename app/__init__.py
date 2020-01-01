@@ -6,15 +6,13 @@ import os
 
 from flask import Flask
 from flask_script import Manager
-from flask_sqlalchemy import SQLAlchemy
-from flask_mail import Mail
-from flask_migrate import Migrate, MigrateCommand
-from flask_user import UserManager
 from flask_wtf.csrf import CSRFProtect
 
-
+# TODO: enable csrf for security
+USE_CSRF = False
 # Instantiate Flask extensions
-csrf_protect = CSRFProtect()
+if USE_CSRF:
+    csrf_protect = CSRFProtect()
 
 # Initialize Flask Application
 def create_app(extra_config_settings={}):
@@ -27,11 +25,13 @@ def create_app(extra_config_settings={}):
     app.config.from_object('app.settings')
     # Load environment specific settings
     app.config.from_object('app.local_settings')
+
     # Load extra settings from extra_config_settings param
     app.config.update(extra_config_settings)
 
-    # Setup WTForms CSRFProtect
-    csrf_protect.init_app(app)
+    if USE_CSRF:
+        # Setup WTForms CSRFProtect
+        csrf_protect.init_app(app)
 
     # Register blueprints
     from .views import register_blueprints
