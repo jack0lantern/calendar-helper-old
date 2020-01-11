@@ -24,12 +24,10 @@ def create_app(extra_config_settings={}):
     port = os.getenv('PORT', 5000)
     print("THIS IS MY PORT NUMBER")
     print(port)
+    os.environ['FLASK_RUN_PORT'] = str(port)
     sys.stdout.flush()
     # Load common settings
-    app.config.from_object('app.settings')
-    app.config.update(dict(
-        SERVER_NAME='0.0.0.0:' + str(port)
-        ))
+    
     # Load environment specific settings
     # app.config.from_object('app.local_settings')
 
