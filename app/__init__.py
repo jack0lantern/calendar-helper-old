@@ -20,6 +20,9 @@ def create_app(extra_config_settings={}):
     # Instantiate Flask
     app = Flask(__name__)
 
+    print("THIS IS MY PORT NUMBER")
+    print(os.environ['PORT'])
+    sys.stdout.flush()
     # Load common settings
     app.config.from_object('app.settings')
     app.config.update(dict(
