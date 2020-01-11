@@ -24,7 +24,7 @@ def create_app(extra_config_settings={}):
     # Load common settings
     app.config.from_object('app.settings')
     # Load environment specific settings
-    app.config.from_object('app.local_settings')
+    # app.config.from_object('app.local_settings')
 
     # Load extra settings from extra_config_settings param
     app.config.update(extra_config_settings)
