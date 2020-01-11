@@ -16,4 +16,4 @@ manager = Manager(create_app)
 if __name__ == "__main__":
     # python manage.py                      # shows available commands
     # python manage.py runserver --help     # shows available runserver options
-    manager.run(port=os.environ['PORT'] || 5000)
+    manager.run(port=os.environ['PORT'] if os.environ['PORT'] else 5000)
