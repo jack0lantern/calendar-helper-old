@@ -5,7 +5,6 @@ from datetime import datetime
 import os
 
 from flask import Flask
-from flask_script import Manager
 from flask_wtf.csrf import CSRFProtect
 
 # TODO: enable csrf for security

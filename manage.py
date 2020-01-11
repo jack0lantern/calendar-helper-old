@@ -6,6 +6,7 @@ Use "python manage.py runserver --help" for a list of runserver options.
 """
 
 from flask_script import Manager
+import os
 
 from app import create_app
 
@@ -15,4 +16,4 @@ manager = Manager(create_app)
 if __name__ == "__main__":
     # python manage.py                      # shows available commands
     # python manage.py runserver --help     # shows available runserver options
-    manager.run()
+    manager.run(port=os.environ['PORT'] || 5000)
