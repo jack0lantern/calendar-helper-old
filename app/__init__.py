@@ -28,7 +28,7 @@ def create_app(extra_config_settings={}):
     # Load common settings
     app.config.from_object('app.settings')
     app.config.update(dict(
-        SERVER_NAME='0.0.0.0' + str(port)
+        SERVER_NAME='0.0.0.0:' + str(port)
         ))
     # Load environment specific settings
     # app.config.from_object('app.local_settings')
