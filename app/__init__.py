@@ -2,6 +2,7 @@
 # a Python package so it can be accessed using the 'import' statement.
 
 from datetime import datetime
+import sys
 import os
 
 from flask import Flask
@@ -20,13 +21,14 @@ def create_app(extra_config_settings={}):
     # Instantiate Flask
     app = Flask(__name__)
 
+    port = os.getenv('PORT', 5000)
     print("THIS IS MY PORT NUMBER")
-    print(os.environ['PORT'])
+    print(port)
     sys.stdout.flush()
     # Load common settings
     app.config.from_object('app.settings')
     app.config.update(dict(
-        SERVER_NAME='0.0.0.0' + os.environ['PORT']
+        SERVER_NAME='0.0.0.0' + str(port)
         ))
     # Load environment specific settings
     # app.config.from_object('app.local_settings')
