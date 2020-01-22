@@ -15,7 +15,7 @@ For Flask-User v0.6, see [the Flask-User-Starter-App v0.6 branch](https://github
         * models
         * static
         * templates
-        * views
+        * routes
     * tests
 * Includes test framework (`py.test` and `tox`)
 * Includes database migration framework (`alembic`)

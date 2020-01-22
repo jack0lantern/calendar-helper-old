@@ -39,7 +39,7 @@ def create_app(extra_config_settings={}):
         csrf_protect.init_app(app)
 
     # Register blueprints
-    from .views import register_blueprints
+    from .routes import register_blueprints
     register_blueprints(app)
 
     # Define bootstrap_is_hidden_field for flask-bootstrap's bootstrap_wtf.html
