@@ -29,3 +29,7 @@ def getEvents():
     main()
 
     return jsonify({"success": request.json["token"]})
+
+@main_blueprint.route('/getEvents', methods = ['POST'])
+def process_message():
+    return jsonify(request.json)
