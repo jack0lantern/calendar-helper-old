@@ -6,13 +6,7 @@ import sys
 import os
 
 from flask import Flask
-from flask_wtf.csrf import CSRFProtect
 
-# TODO: enable csrf for security
-USE_CSRF = False
-# Instantiate Flask extensions
-if USE_CSRF:
-    csrf_protect = CSRFProtect()
 
 # Initialize Flask Application
 def create_app(extra_config_settings={}):
@@ -21,9 +15,6 @@ def create_app(extra_config_settings={}):
     # Instantiate Flask
     app = Flask(__name__)
 
-    port = os.getenv('PORT', 5000)
-    print("THIS IS MY PORT NUMBER")
-    print(port)
     os.environ['FLASK_RUN_PORT'] = str(port)
     sys.stdout.flush()
     # Load common settings
@@ -33,10 +24,6 @@ def create_app(extra_config_settings={}):
 
     # Load extra settings from extra_config_settings param
     app.config.update(extra_config_settings)
-
-    if USE_CSRF:
-        # Setup WTForms CSRFProtect
-        csrf_protect.init_app(app)
 
     # Register blueprints
     from .routes import register_blueprints
