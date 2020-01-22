@@ -1,1 +1,1 @@
-web: pip install -r requirements.txt && pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib && flask run -p $PORT
+web: pip install -r requirements.txt && pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib && flask run -p $PORT -h 0.0.0.0
