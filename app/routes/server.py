@@ -33,3 +33,13 @@ def getEvents():
 @main_blueprint.route('/processmessage', methods = ['POST'])
 def process_message():
     return jsonify(request.json)
+
+
+@main_blueprint.route('/api/button-options', methods = ['POST'])
+def process_button_choice():
+    return ''
+
+
+@main_blueprint.route('/api/button', methods = ['POST'])
+def send_button_choices():
+    return ''
