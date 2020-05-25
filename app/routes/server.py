@@ -4,6 +4,7 @@
 
 from flask import Blueprint, render_template, jsonify, request, Flask
 from app.models.gcal import main
+from app.util import server_log
 # import requests
 
 
@@ -32,6 +33,7 @@ def getEvents():
 
 @main_blueprint.route('/processmessage', methods = ['POST'])
 def process_message():
+    server_log.info(request.json)
     return jsonify(request.json)
 
 
