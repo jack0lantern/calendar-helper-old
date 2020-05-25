@@ -4,6 +4,7 @@
 from datetime import datetime
 import sys
 import os
+import requests
 
 from flask import Flask
 
@@ -15,6 +16,9 @@ def create_app(extra_config_settings={}):
     # Instantiate Flask
     app = Flask(__name__)
 
+    res = requests.get('https://slack.com/api/rtm.connect')
+
+    port = 5000
     os.environ['FLASK_RUN_PORT'] = str(port)
     sys.stdout.flush()
     # Load common settings

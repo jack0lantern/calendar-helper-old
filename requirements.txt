@@ -11,3 +11,5 @@ Flask-WTF==0.14.2
 pytest==3.0.5
 pytest-cov==2.4.0
 
+# Util
+requests==2.23.0
