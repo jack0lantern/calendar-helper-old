@@ -7,6 +7,7 @@ import os
 import requests
 
 from flask import Flask
+# from flask_wtf.csrf import CSRFProtect
 
 
 # Initialize Flask Application
@@ -16,9 +17,7 @@ def create_app(extra_config_settings={}):
     # Instantiate Flask
     app = Flask(__name__)
 
-    res = requests.get('https://slack.com/api/rtm.connect')
-
-    port = 5000
+    port = os.getenv('PORT', 5000)
     os.environ['FLASK_RUN_PORT'] = str(port)
     sys.stdout.flush()
     # Load common settings
