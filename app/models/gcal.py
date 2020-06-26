@@ -9,7 +9,8 @@ from google.auth.transport.requests import Request
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
-def main():
+
+def get_calendar_service():
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
     """
@@ -34,6 +35,11 @@ def main():
 
     service = build('calendar', 'v3', credentials=creds)
 
+    return service
+
+
+def get_events():
+    service = get_calendar_service()
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     print('Getting the upcoming 10 events')
@@ -48,5 +54,8 @@ def main():
         start = event['start'].get('dateTime', event['start'].get('date'))
         print(start, event['summary'])
 
+    return events;
+
+
 if __name__ == '__main__':
-    main()
+    get_events()
