@@ -1,119 +1,45 @@
-# Flask-User starter app v1.0
+# Python: Getting Started
 
-This code base serves as starting point for writing your next Flask application.
+A barebones Django app, which can easily be deployed to Heroku.
 
-This branch is for Flask-User v1.0.
+This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
 
-For Flask-User v0.6, see [the Flask-User-Starter-App v0.6 branch](https://github.com/lingthio/Flask-User-starter-app/tree/v0.6).
+## Running Locally
 
-## Code characteristics
+Make sure you have Python 3.7 [installed locally](http://install.python-guide.org). To push to Heroku, you'll need to install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), as well as [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
 
-* Tested on Python 2.6, 2.7, 3.3, 3.4, 3.5 and 3.6
-* Well organized directories with lots of comments
-    * app
-        * commands
-        * models
-        * static
-        * templates
-        * routes
-    * tests
-* Includes test framework (`py.test` and `tox`)
-* Includes database migration framework (`alembic`)
-* Sends error emails to admins for unhandled exceptions
+```sh
+$ git clone https://github.com/heroku/python-getting-started.git
+$ cd python-getting-started
 
+$ python3 -m venv getting-started
+$ pip install -r requirements.txt
 
-## Setting up a development environment
+$ createdb python_getting_started
 
-We assume that you have `git` and `virtualenv` and `virtualenvwrapper` installed.
+$ python manage.py migrate
+$ python manage.py collectstatic
 
-    # Clone the code repository into ~/dev/my_app
-    mkdir -p ~/dev
-    cd ~/dev
-    git clone https://github.com/lingthio/Flask-User-starter-app.git my_app
+$ heroku local
+```
 
-    # Create the 'my_app' virtual environment
-    mkvirtualenv -p PATH/TO/PYTHON my_app
+Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-    # Install required Python packages
-    cd ~/dev/my_app
-    workon my_app
-    pip install -r requirements.txt
+## Deploying to Heroku
 
+```sh
+$ heroku create
+$ git push heroku master
 
-# Configuring SMTP
+$ heroku run python manage.py migrate
+$ heroku open
+```
+or
 
-Copy the `local_settings_example.py` file to `local_settings.py`.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-    cp app/local_settings_example.py app/local_settings.py
+## Documentation
 
-Edit the `local_settings.py` file.
+For more information about using Python on Heroku, see these Dev Center articles:
 
-Specifically set all the MAIL_... settings to match your SMTP settings
-
-Note that Google's SMTP server requires the configuration of "less secure apps".
-See https://support.google.com/accounts/answer/6010255?hl=en
-
-Note that Yahoo's SMTP server requires the configuration of "Allow apps that use less secure sign in".
-See https://help.yahoo.com/kb/SLN27791.html
-
-
-## Initializing the Database
-
-    # Create DB tables and populate the roles and users tables
-    python manage.py init_db
-
-    # Or if you have Fabric installed:
-    fab init_db
-
-
-## Running the app
-
-    # Start the Flask development web server
-    python manage.py runserver
-
-    # Or if you have Fabric installed:
-    fab runserver
-
-Point your web browser to http://localhost:5000/
-
-You can make use of the following users:
-- email `user@example.com` with password `Password1`.
-- email `admin@example.com` with password `Password1`.
-
-
-## Running the automated tests
-
-    # Start the Flask development web server
-    py.test tests/
-
-    # Or if you have Fabric installed:
-    fab test
-
-
-## Trouble shooting
-
-If you make changes in the Models and run into DB schema issues, delete the sqlite DB file `app.sqlite`.
-
-
-## See also
-
-* [FlaskDash](https://github.com/twintechlabs/flaskdash) is a starter app for Flask
-  with [Flask-User](https://readthedocs.org/projects/flask-user/)
-  and [CoreUI](https://coreui.io/) (A Bootstrap Admin Template).
-
-## Acknowledgements
-
-With thanks to the following Flask extensions:
-
-* [Flask](http://flask.pocoo.org/)
-* [Flask-Login](https://flask-login.readthedocs.io/)
-* [Flask-Migrate](https://flask-migrate.readthedocs.io/)
-* [Flask-User](http://flask-user.readthedocs.io/en/v0.6/)
-
-<!-- Please consider leaving this line. Thank you -->
-[Flask-User-starter-app](https://github.com/lingthio/Flask-User-starter-app) was used as a starting point for this code repository.
-
-
-## Authors
-
-- Ling Thio -- ling.thio AT gmail DOT com
+- [Python on Heroku](https://devcenter.heroku.com/categories/python)
